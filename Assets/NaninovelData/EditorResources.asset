@@ -149,10 +149,10 @@ MonoBehaviour:
     - name: Loc_First
       pathPrefix: Scripts
       guid: 0f0856946e5adfa4da9e4694ea5a6ed1
-    - name: Loc_First 1
+    - name: Loc_Second
       pathPrefix: Scripts
       guid: 0f9c106c2b2bb1d4489267ace18dffb7
-    - name: Loc_First 2
+    - name: Loc_Third
       pathPrefix: Scripts
       guid: 4bac9fb9ceb81504fb43811b283c3d78
     - name: Start

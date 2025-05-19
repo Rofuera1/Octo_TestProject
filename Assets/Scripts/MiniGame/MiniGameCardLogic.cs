@@ -27,6 +27,9 @@ namespace MiniGame
                 return;
             }
 
+            if (Card == Card_First)
+                return;
+
             Card_Second = Card;
 
             if (Card_First.Id == Card_Second.Id)
