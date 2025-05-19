@@ -1,0 +1,29 @@
+@if questStage<3
+    @back ThirdBG.Fade
+    @print text:"Храм закрыт и внутри пусто…"
+    
+    @showUI id:Map
+    @hideAll
+    @stop
+@endif
+@if questStage==3
+    @back ThirdBG.Fade
+    @print text:"Вы подбираете древнюю реликвию."
+
+    @set relicTaken=true
+    @set questStage=4
+    
+    @lockLocation id:"Loc_Third"
+    @questUpdate id:MainQuest text:"Вернитесь к Second." stage:4
+    
+    @showUI id:Map
+    @hideAll
+    @stop
+@endif
+
+@back ThirdBG
+@print text:"Здесь больше ничего нет."
+    
+@showUI id:Map
+@hideAll
+@stop

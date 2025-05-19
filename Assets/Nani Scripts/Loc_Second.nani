@@ -1,0 +1,46 @@
+@if questStage==1
+    @back SecondBG.Fade
+    Second.Neutral: Так, {playerName}, нужна древняя реликвия из храма.
+                    Но сначала проверим твою смекалку!
+
+    @set questStage=2
+    @questUpdate id:MainQuest text:"Завершите мини-игру Second." stage:2
+
+    @hideUI id:All
+    @startMiniGame SceneName:MiniGame_Pairs
+
+    Second.Neutral: Отлично! Как бы то ни было, тебе всё равно в храм.
+    
+    @showUI id:All
+    @set questStage=3
+    @questUpdate id:MainQuest text:"Найдите реликвию в локации 3." stage:3
+    
+    @showUI id:Map
+    @hideAll
+    @stop
+@endif
+@if questStage==4
+    @back SecondBG.Fade
+    @print text:"Похоже, Second уже ушёл…"
+    @set questStage=5
+    @questUpdate id:MainQuest text:"Вернитесь к First." stage:5
+    
+    @showUI id:Map
+    @hideAll
+    @stop
+@endif
+@if questStage==3 
+    @back SecondBG
+    Second.Neutral: Не тяни время — за реликвией в храм!
+    
+    @showUI id:Map
+    @hideAll
+    @stop
+@endif
+
+@back SecondBG
+@print text:"Здесь никого нет."
+    
+@showUI id:Map
+@hideAll
+@stop

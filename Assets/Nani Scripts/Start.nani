@@ -1,0 +1,13 @@
+# Start
+@back black
+@wait 0.3
+
+@input playerName summary:"Как вас зовут?"
+@stop
+
+@set questStage=0
+@set loc_Third_Locked=0
+@set relicTaken=false
+
+@showUI id:Map
+@stop

@@ -1,0 +1,64 @@
+@if questStage==0
+    @back FirstBG.Fade
+    First.Neutral: «Рад познакомиться, {playerName}. Мне нужна твоя помощь.»
+
+    @set questStage=1
+    @questUpdate id:MainQuest text:"Отправьтесь к Second за деталями задания." stage:1
+
+    First.Neutral: Сходи к моему коллеге Second. Он всё объяснит.
+
+    @showUI id:Map
+    @hideAll
+    @stop
+@endif
+@if questStage<5
+    @back FirstBG
+    First.Neutral: «Пока у тебя нет реликвии, поговори с Second.»
+    @showUI id:Map
+    @hideAll
+    @stop
+@endif
+@if questStage==5
+    @back FirstBG.Fade
+    First.Neutral: «Ну что, {playerName}, реликвия у тебя?»
+
+    @choice "Отдать реликвию First" goto:.GiveFirst
+    @choice "Отдать реликвию Second" goto:.GiveSecond
+    @choice "Оставить себе" goto:.KeepRelic
+    @stop
+
+    # GiveFirst
+    @set relicOwner="First"
+    First.Happy: «Превосходно! Огромное спасибо.»
+    Second.Sad: «Вот уж не ожидал… Ладно.»
+    @goto .QuestEnd
+
+    # GiveSecond
+    @set relicOwner="Second"
+    Second.Happy: «Великолепно! Именно это мне и было нужно.»
+    First.Sad: «Что ж, не мой день…»
+    @goto .QuestEnd
+
+    # KeepRelic
+    @set relicOwner="None"
+    First.Sad: «Эй, мы же договаривались!»
+    Second.Sad: «Это нечестно, {playerName}…»
+    @goto .QuestEnd
+
+    # QuestEnd
+    @set questStage=6
+    @questUpdate id:MainQuest text:"Квест завершён." stage:6
+    @questHide  id:MainQuest
+    @print text:"Квест завершён! (Реликвия: {relicOwner})"
+    
+    @showUI id:Map
+    @hideAll
+    @stop
+@endif
+
+@back FirstBG
+First.Neutral: «Спасибо ещё раз за помощь.»
+    
+@showUI id:Map
+@hideAll
+@stop
